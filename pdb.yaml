@@ -1,9 +1,9 @@
-appVersion: policy/v1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: bankapp-pdb
 spec:
-  minavailable: 2
+  minAvailable: 2
   selector:
-    matchLables:
+    matchLabels:
       app: nginx

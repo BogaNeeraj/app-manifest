@@ -1,5 +1,5 @@
-apiversion: autoscaling/v2
-kind: HorizantalPodAutoscalar
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
 metadata:
   name: bankapp-hpa
 spec:
