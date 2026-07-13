@@ -33,7 +33,7 @@ spec:
             memory: "256Mi"
         volumeMounts:
           - name: pvc-1
-            mountpath: /var/lib/mysql
+            mountpath: /usr/share/nginx/html/
       
       volumeClaimTemplates:
       - metadata:
