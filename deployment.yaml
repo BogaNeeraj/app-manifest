@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
   template:
     metadata:
-      labels: 
+      labels:
         app: nginx
     spec:
       containers:
@@ -18,32 +18,29 @@ spec:
         ports:
         - containerPort: 80
 
-        #configmap intergration
+
         envFrom:
         - configMapRef:
-            name: bankapp-confi
-        
-        #resporces
+            name: bankapp-config
+
         resources:
           requests:
             cpu: "100m"
             memory: "128Mi"
-          limits: 
+          limits:
             cpu: "200m"
             memory: "256Mi"
 
-          #probes
-          livenessProbe:
-            httpGet:
-             path: /
-             port: 80
-             initialDelaySeconds: 30
-             periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 5
 
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-              initialDelaySeconds: 10
-              periodSeconds: 5
-          
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
